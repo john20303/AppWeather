@@ -1,0 +1,48 @@
+<div class="row">
+  <div class="col-md-6">
+    <div class="card card-body">
+      <img width="300" alt="Angular logo" src="assets/img/Angular.png" class="m-auto mb-3">
+      <form [formGroup]="location" (ngSubmit)="data()">
+        <div class="form-group">
+          <div>
+            <input type="text"
+                   placeholder="City"
+                   class="form-control"
+                   formControlName="city"
+                   [class.is-invalid]="city"
+            >
+            <span class="text-danger" *ngIf="city">El campo <strong>City</strong> no puede estar vacio!</span>
+          </div>
+          <div>
+            <input type="text"
+                   placeholder="Code"
+                   class="form-control my-3"
+                   formControlName="code"
+                   [class.is-invalid]="code"
+            >
+            <span class="text-danger" *ngIf="code">El campo <strong>Code</strong> no puede estar vacio!</span>
+          </div>
+          <div class="d-grid gap-2">
+            <button class="btn btn-outline-primary btn-block mt-5" type="submit" [disabled]="location.invalid">Send
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="card" style="width: 18rem;">
+      <div class="card-header">
+        Featured
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">Pais: <span class="text-danger">{{weather.sys.country}}</span></li>
+        <li class="list-group-item">Ciudad: <span class="text-danger">{{weather.name}}</span></li>
+        <li class="list-group-item">Temperatura: <span class="text-danger">{{weather.main.feels_like}}</span></li>
+        <li class="list-group-item">Coordenadas: <span class="text-danger">lat:{{weather.coord.lat}}/ long:{{weather.coord.lon}}</span></li>
+        <li class="list-group-item">Descripcion Clima: <span class="text-danger">{{weather.weather[0].description}}</span></li>
+        <li class="list-group-item">Icono: <span class="text-danger">{{weather.weather[0].icon}}</span></li>
+      </ul>
+    </div>
+  </div>
+</div>
